@@ -8,7 +8,7 @@
  * ver hallazgo P0 de kimi review 2026-08-14.
  */
 
-import { localStore } from "./store";
+import { localStore } from "./store/index.js";
 
 export interface LocalUser {
   uid: string;

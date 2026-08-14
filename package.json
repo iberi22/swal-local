@@ -9,6 +9,30 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./store": {
+      "types": "./dist/store/index.d.ts",
+      "import": "./dist/store/index.js"
+    },
+    "./auth": {
+      "types": "./dist/auth.d.ts",
+      "import": "./dist/auth.js"
+    },
+    "./tts": {
+      "types": "./dist/tts/index.d.ts",
+      "import": "./dist/tts/index.js"
+    },
+    "./stt": {
+      "types": "./dist/stt/index.d.ts",
+      "import": "./dist/stt/index.js"
+    },
+    "./ollama": {
+      "types": "./dist/ollama/index.d.ts",
+      "import": "./dist/ollama/index.js"
+    },
+    "./capabilities": {
+      "types": "./dist/capabilities.d.ts",
+      "import": "./dist/capabilities.js"
     }
   },
   "files": [

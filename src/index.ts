@@ -8,3 +8,4 @@ export * from "./auth";
 export * from "./tts";
 export * from "./stt";
 export * from "./ollama";
+export * from "./capabilities";
