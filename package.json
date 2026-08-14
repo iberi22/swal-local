@@ -1,0 +1,41 @@
+{
+  "name": "@iberi22/swal-local",
+  "version": "0.1.0",
+  "description": "Lógica local-first reutilizable del ecosistema SWAL: IndexedDB transaccional, auth PBKDF2, TTS/STT Web Speech, Ollama client. TS puro, zero-dependency runtime.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check src/"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.2.5",
+    "jsdom": "30.0.1",
+    "typescript": "^5.8.3",
+    "vitest": "^2.1.9"
+  },
+  "keywords": [
+    "local-first",
+    "indexeddb",
+    "pbkdf2",
+    "web-speech",
+    "ollama",
+    "pwa",
+    "swal"
+  ],
+  "license": "AGPL-3.0-only"
+}
