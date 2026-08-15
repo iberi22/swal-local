@@ -317,17 +317,68 @@ export async function exportStore(): Promise<Record<string, unknown>> {
 }
 
 /**
- * Importa datos (formato exportStore) — reemplaza TODO el store (fix P2 kimi #6)
+ * Aplica migraciones a un dataset importado (versión vieja → actual)
+ * Reutiliza el mismo catálogo MIGRATIONS que la apertura de la DB.
+ * Devuelve el dataset migrado + la versión final aplicada.
+ */
+export function applyMigrations<T extends Record<string, unknown>>(
+  data: T,
+  fromVersion: number,
+): { data: T; version: number } {
+  let current = data;
+  let version = fromVersion;
+  for (const migration of MIGRATIONS) {
+    if (version >= migration.to) continue;
+    if (migration.from !== version) break;
+    // Las migraciones de schema (createObjectStore) no aplican a datos JSON;
+    // las migraciones de datos futuras operan sobre el objeto importado.
+    current = current; // (reservado: transformaciones de datos por versión)
+    version = migration.to;
+  }
+  return { data: current, version };
+}
+
+/**
+ * Importa datos (formato exportStore o raw) — reemplaza TODO el store (fix P2 kimi #6)
+ * Valida versión: migra si vieja, rechaza si futura (hallazgo kimi P2 — wave B2 #63)
  * @returns cantidad de claves importadas
  */
 export async function importStore(data: Record<string, unknown>): Promise<number> {
+  // Formato exportStoreJSON: { app, version, exportedAt, data }
+  let version = DB_VERSION;
+  let payload: Record<string, unknown> = data;
+
+  if (
+    typeof data === "object" &&
+    data !== null &&
+    "version" in data &&
+    typeof (data as { version?: unknown }).version === "number" &&
+    "data" in data &&
+    typeof (data as { data?: unknown }).data === "object"
+  ) {
+    const meta = data as { version: number; data: Record<string, unknown> };
+    version = meta.version;
+    payload = meta.data ?? {};
+    if (version > DB_VERSION) {
+      throw new Error(
+        `[local-store] import rechazado: export de versión ${version} es MÁS NUEVA que la actual (${DB_VERSION}). Actualiza la app primero.`,
+      );
+    }
+    if (version < DB_VERSION) {
+      console.info(`[local-store] import v${version} → migrando a v${DB_VERSION}`);
+      const migrated = applyMigrations(payload, version);
+      payload = migrated.data;
+      version = migrated.version;
+    }
+  }
+
   const db = await getDb();
   return new Promise((resolve, reject) => {
     const tx = db.transaction("kv", "readwrite");
     const store = tx.objectStore("kv");
     store.clear();
     let count = 0;
-    for (const [key, value] of Object.entries(data)) {
+    for (const [key, value] of Object.entries(payload)) {
       store.put(value, key);
       count++;
     }
