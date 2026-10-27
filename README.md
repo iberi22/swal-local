@@ -62,11 +62,18 @@ Every module uses browser-native APIs (IndexedDB, WebCrypto, SpeechSynthesis) in
 - **Easier audits** — every dependency is your own code
 - **Offline-first** — works without network access (except Ollama client)
 
-## Used By
+## Adoption
 
-- [Shelf](https://github.com/iberi22/shelf) — inventory & POS system
-- [TikTokBoost](https://github.com/iberi22/tiktboost) — content analytics
-- [Hosteler-IA](https://github.com/iberi22/hosteler-ia) — field service management
+swal-local is new and not yet a dependency of any published app.
+
+- [TikTokBoost](https://github.com/iberi22/tiktboost) currently carries a vendored copy under `packages/swal-local`; it will switch to the published package.
+- Shelf, Gara-G and Hosteler-IA (Fize) have their own copies of the same logic (storage, PBKDF2 auth, voice, Ollama client) and are planned to migrate.
+
+## Releasing
+
+1. Bump `version` in `package.json` (semver) and commit to `main`.
+2. Push a matching tag: `git tag v0.1.0 && git push origin v0.1.0`.
+3. The `Release` workflow checks that the tag matches the version, runs typecheck, tests and build, and publishes to npm with provenance. It needs the `NPM_TOKEN` repository secret.
 
 ## Verification
 
