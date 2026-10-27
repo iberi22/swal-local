@@ -44,7 +44,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "biome check src/"
+    "lint": "biome check src/",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.3",
@@ -62,5 +63,17 @@
     "pwa",
     "swal"
   ],
-  "license": "AGPL-3.0-only"
+  "license": "AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iberi22/swal-local.git"
+  },
+  "homepage": "https://github.com/iberi22/swal-local#readme",
+  "bugs": {
+    "url": "https://github.com/iberi22/swal-local/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }
