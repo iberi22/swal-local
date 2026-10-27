@@ -71,7 +71,7 @@ swal-local is new and not yet a dependency of any published app.
 
 ## Releasing
 
-1. Bump `version` in `package.json` (semver) and commit to `main`.
+1. Bump `version` in `package.json` (semver) and commit to `master`.
 2. Push a matching tag: `git tag v0.1.0 && git push origin v0.1.0`.
 3. The `Release` workflow checks that the tag matches the version, runs typecheck, tests and build, and publishes to npm with provenance. It needs the `NPM_TOKEN` repository secret.
 
