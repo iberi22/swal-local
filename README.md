@@ -1,5 +1,6 @@
 # @iberi22/swal-local
 
+[![CI](https://github.com/iberi22/swal-local/actions/workflows/ci.yml/badge.svg)](https://github.com/iberi22/swal-local/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](tsconfig.json)
 [![Tests](https://img.shields.io/badge/Tests-16%20passing-brightgreen.svg)](#verification)
@@ -80,6 +81,10 @@ npm run build       # tsc → dist/
 
 Extracted from `tiktboost/apps/web/src/lib/` (local-first migration 2026-08-14).
 See `tiktboost/docs/ARCHITECTURE-ALIGNMENT.md` for alignment with the unified architecture.
+
+## Security
+
+Please refer to the [Security Policy](SECURITY.md) for information on supported versions and how to report a vulnerability.
 
 ## License
 
