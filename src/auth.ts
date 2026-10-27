@@ -42,7 +42,12 @@ function generateUid(): string {
 	if (typeof crypto !== "undefined" && crypto.randomUUID) {
 		return crypto.randomUUID();
 	}
-	return `local-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+	const bytes = new Uint8Array(8);
+	crypto.getRandomValues(bytes);
+	const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join(
+		"",
+	);
+	return `local-${Date.now()}-${hex}`;
 }
 
 /**

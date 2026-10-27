@@ -38,13 +38,19 @@ export function getBaseUrl(): string {
 	return localStorage.getItem("tiktboost-ollama-url") ?? DEFAULT_BASE_URL;
 }
 
+function stripTrailingSlashes(value: string): string {
+	let end = value.length;
+	while (end > 0 && value[end - 1] === "/") end--;
+	return value.slice(0, end);
+}
+
 export function setBaseUrl(url: string): void {
 	if (!url || url.trim() === "") {
 		localStorage.removeItem("tiktboost-ollama-url");
 	} else {
 		localStorage.setItem(
 			"tiktboost-ollama-url",
-			url.trim().replace(/\/+$/, ""),
+			stripTrailingSlashes(url.trim()),
 		);
 	}
 }
