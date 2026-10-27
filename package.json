@@ -47,6 +47,7 @@
     "lint": "biome check src/"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.6.3",
     "fake-indexeddb": "^6.2.5",
     "jsdom": "30.0.1",
     "typescript": "^5.8.3",
