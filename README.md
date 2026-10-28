@@ -63,7 +63,7 @@ Every module uses browser-native APIs (IndexedDB, WebCrypto, SpeechSynthesis) in
 - **Easier audits** — every dependency is your own code
 - **Offline-first** — works without network access (except Ollama client)
 
-## Adoption
+## Used By
 
 swal-local is new and not yet a dependency of any published app.
 
@@ -80,7 +80,7 @@ swal-local is new and not yet a dependency of any published app.
 
 ```bash
 npm run typecheck   # tsc --noEmit (0 errors)
-npm run test        # vitest (16 tests passing)
+npm run test        # vitest (29 tests passing)
 npm run build       # tsc → dist/
 ```
 
