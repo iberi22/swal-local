@@ -1,7 +1,7 @@
 # @iberi22/swal-local
 
 [![CI](https://github.com/iberi22/swal-local/actions/workflows/ci.yml/badge.svg)](https://github.com/iberi22/swal-local/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: AGPL-3.0-only](https://img.shields.io/badge/License-AGPL--3.0--only-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](tsconfig.json)
 [![Tests](https://img.shields.io/badge/Tests-16%20passing-brightgreen.svg)](#verification)
 
@@ -95,4 +95,6 @@ Please refer to the [Security Policy](SECURITY.md) for information on supported 
 
 ## License
 
-MIT — see [LICENSE](LICENSE) for details.
+Copyright (c) 2026 Brahyan Belalcázar (SouthWest AI Labs).
+
+Licensed under the GNU Affero General Public License v3.0 only (`AGPL-3.0-only`) — see [LICENSE](LICENSE) for the full text.
